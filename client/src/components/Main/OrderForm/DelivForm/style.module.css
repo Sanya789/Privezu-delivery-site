@@ -1,0 +1,39 @@
+.mapbutton{
+  margin:auto;
+}
+
+
+.massbutton{
+ margin: auto;
+ display: flex;
+ flex-direction:column ;
+ justify-content: center;
+}
+
+
+.sizebutton{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ }
+
+
+ .volumebutton{
+  /* display: flex; */
+  /* justify-content: center; */
+ }
+
+
+ /* .dateform{
+  display: flex;
+  justify-content: center;
+  
+ } */
+
+.delivform{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;;
+}

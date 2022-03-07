@@ -1,0 +1,17 @@
+
+
+.orderForm{
+  
+  display: flex;
+  flex-direction: column;
+  background: url("") no-repeat center;
+  /* background-size: 1000px; */
+   
+}
+
+.orderbutton{
+  /* margin:auto; */
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}

@@ -1,0 +1,11 @@
+.container{
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.listgroup{
+  margin:20px;
+  width: 600px;
+}

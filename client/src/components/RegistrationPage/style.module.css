@@ -1,0 +1,6 @@
+.registration{
+  margin-left: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
