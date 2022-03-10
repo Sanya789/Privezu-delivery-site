@@ -6,8 +6,6 @@ export const coordinateReducer = (state = initState, action) => {
   switch (type) {
     case GET_COORD_FROM:
       return payload;
-
-
     default:
       return state;
   }

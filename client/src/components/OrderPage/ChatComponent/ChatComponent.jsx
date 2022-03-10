@@ -2,10 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function ChatComponent() {
-  return(
+  return (
     <div>
-<Link to='/chat'>Chat</Link>
-
+      <Link to='/chat'>Chat</Link>
     </div>
   )
 }

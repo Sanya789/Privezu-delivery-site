@@ -40,7 +40,7 @@ export default function Sidebar({ id }) {
           Ваш телефон: <span className="text-muted">{id}</span>
         </div>
         <Button onClick={() => setModalOpen(true)} className="rounded-0">
-          Новый {conversationsOpen ? 'Conversation' : 'Contact'}
+          Новый {conversationsOpen ? 'Диалог' : 'Контакт'}
         </Button>
       </Tab.Container>
 

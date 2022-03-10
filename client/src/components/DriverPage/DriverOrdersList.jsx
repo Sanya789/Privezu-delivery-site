@@ -8,12 +8,9 @@ import { getDriverOrdersFromServer } from "../../redux/ac/orderActions"
 
 
 function DriverOrdersList() {
-
   const dispatch = useDispatch()
   useEffect(() => { dispatch(getDriverOrdersFromServer()) }, [])
   const driverOrders = useSelector(state => state.order)
-  console.log('driverOrders', driverOrders)
-  // if(!clientOrders.clientOrders) return null
 
   return (
     <>
@@ -37,7 +34,7 @@ function DriverOrdersList() {
               )
             }
           })
-          : <p style={{fontSize:"20px", marginLeft:"280px"}}>Нет заказов</p>
+          : <p style={{ fontSize: "20px", marginLeft: "280px" }}>Нет заказов</p>
       }
     </>
   )

@@ -1,9 +1,6 @@
 import axios from "axios"
 
-import { SET_USER, GET_USER,ONE_USER  } from "../types/userTypes"
-
-
-
+import { SET_USER, GET_USER, ONE_USER } from "../types/userTypes"
 
 export const setUser = (value) => {
   return {
@@ -12,7 +9,7 @@ export const setUser = (value) => {
   }
 }
 
-export const getUserAuth = ( data) => {
+export const getUserAuth = (data) => {
   return {
     type: GET_USER,
     payload: data
@@ -20,9 +17,8 @@ export const getUserAuth = ( data) => {
 }
 
 
-export const getUserAuthFromServer = () => async (dispatch) =>{
+export const getUserAuthFromServer = () => async (dispatch) => {
   const authUser = await axios.get(`http://localhost:3032/user`)
-  // console.log('===============>>>>>>>666', authUser.data)
   dispatch(getUserAuth(authUser.data))
 }
 
@@ -34,7 +30,6 @@ export const getUser = (input) => async (dispatch) => {
 
 export const signUpUser = (input) => async (dispatch) => {
   const res = await axios.post('/user/signin', input)
-  // console.log(res.data.user)
   dispatch(setUser(res.data.user))
 }
 
@@ -45,7 +40,6 @@ export const userLogout = () => async (dispatch) => {
 
 export const checkUser = () => async (dispatch) => {
   const res = await axios.post('/user/check')
-  console.log(res)
   if (res.statusText) {
     dispatch(setUser(res.data.user))
   } else {

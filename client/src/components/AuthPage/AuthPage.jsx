@@ -9,14 +9,9 @@ const wordRoles = ['Клиент', 'Экспедитор', 'Админ']
 
 function AuthPage() {
   const [inputs, setInputs] = useState({ email: '', password: '', roleId: '1' });
-
   const navigate = useNavigate()
-
   const dispatch = useDispatch()
-  // const roles = useSelector(state => state.roles)
   const user = useSelector(state => state.user)
-  // console.log(user);
-
   const inputsHandler = (e) => {
     setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }

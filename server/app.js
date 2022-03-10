@@ -1,17 +1,9 @@
 const express = require("express");
 const app = express();
-
-
-
-
-
 const path = require('path');
 const upload = require('./middlewares/middlewares');
 
-
-
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 const cors = require("cors");
 const PORT = 3032;
@@ -24,8 +16,6 @@ const FileStore = require("session-file-store")(session);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
-
-
 
 const userRouter = require('./routes/userRouter');
 const rolesRouter = require('./routes/rolesRouter');
@@ -41,9 +31,7 @@ app.use(cors(
 
 app.use(
   session({
-
     name: "session!",
-
     store: new FileStore({}),
     saveUninitialized: false,
     secret: "dsmkalmdkl",
@@ -54,10 +42,7 @@ app.use(
 
 app.post('/uploadIMG', upload.single('file'), async (req, res) => {
   const { img } = req.body
-  console.log(req.session)
-
   try {
-    console.log(req?.file?.originalname);
     const post = await User.update({ img: `img/${req?.file?.originalname}`, }, {
       where: { id: req.session.user.id }
     });
@@ -73,41 +58,12 @@ app.use('/roles', rolesRouter)
 
 app.post('/upload', async (req, res) => {
   try {
-    // console.log('=========>',req.body)
-
     const YaDeparture = '123'
     const YaDestination = '123'
     const YaLatitude = '123'
     const YaLongitude = '123'
     const CurrentUserId = 1
     const AcPrice = '123'
-
-
-    //  console.log('backWorking')
-
-
-
-    console.log(
-      YaDeparture,
-      YaDestination,
-      YaLatitude,
-      YaLongitude,
-      req.body.volume,
-      req.body.length,
-      req.body.width,
-      req.body.heigth,
-      req.body.weight,
-      req.body.departureDate,
-      req.body.destinationDate,
-      AcPrice,
-      CurrentUserId,
-
-      "123",
-      false,
-      "123",
-      123,
-      req.body
-    );
     const order = await Order.create({
       departure: req.body.departure,
       destination: req.body.destination,
@@ -128,10 +84,7 @@ app.post('/upload', async (req, res) => {
       cargoCost: "123",
       status: false,
       cost: "123",
-      //    req.body.cargoCost
     });
-    // console.log(task)
-    console.log("done");
     res.json(order);
   } catch (err) {
     console.log(err);
@@ -140,22 +93,15 @@ app.post('/upload', async (req, res) => {
 });
 
 app.get("/orders/:id", async (req, res) => {
-  console.log("working");
-  console.log(req.params.id);
   const order = await Order.findOne({ where: { id: req.params.id } });
-  console.log({ order });
   res.json({ order });
 });
 
 app.patch('/changeStatus/:id',  async (req, res) => {
-  console.log('workin')
-  try {
-      
+  try {      
       const {id} = req.params
       const status = true;
-      console.log('=========>',{status})
     const order = await Order.update({status},{ where: {id} });
-    console.log(order)
     res.sendStatus(200);
   } catch (err) {
     res.sendStatus(500);
@@ -163,29 +109,19 @@ app.patch('/changeStatus/:id',  async (req, res) => {
 });
 
 app.get("/activeOrders", async (req, res) => {
-  console.log("proshel1");
-  // const activeOrders = Order.findAll({where:{status:false} && {} })
   const activeOrders = await Order.findAll({ where: { status: false } });
-  console.log("proshel");
   res.json({ activeOrders });
 });
 
 app.get("/clientOrders", async (req, res) => {
   const clientOrders = await Order.findAll({ where: { clientId: req.session.user.id } }); //req.session.user.id
-  console.log('111',req.session.user.id)
   res.json( {clientOrders });
 });
 
 app.get("/driverOrders", async (req, res) => {
   const driverOrders = await Order.findAll({ where: { driverId: req.session.user.id} }); //req.session.user.id
-  console.log('111',req.session.user.id)
   res.json( {driverOrders });
 });
-
-// app.get("/getOneUser", async (req, res) => {
-//   const getOneUser = await User.findOne({ where: { roleId: req.session.user.id} });
-//   res.json( {getOneUser});
-// });
 
 const io = require("socket.io")(3033, {
   cors: {
@@ -211,7 +147,6 @@ io.on("connection", (socket) => {
     });
   });
 });
-
 
 app.listen(PORT, () => {
   console.log(`server started PORT: ${PORT}`);

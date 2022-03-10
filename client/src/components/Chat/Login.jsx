@@ -19,7 +19,7 @@ export default function Login({ onIdSubmit }) {
     <Container className="align-items-center d-flex" style={{ height: '100vh' }}>
       <Form onSubmit={handleSubmit} className="w-100">
         <Form.Group>
-          <Form.Label>Enter Your Id</Form.Label>
+          <Form.Label>Введите Ваш телефон</Form.Label>
           <Form.Control type="text" ref={idRef} required />
         </Form.Group>   
         <Button type="submit" className="mr-2">Войти по телефону</Button>

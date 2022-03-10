@@ -10,9 +10,6 @@ import { BrowserRouter } from 'react-router-dom';
 axios.defaults.baseURL = 'http://localhost:3032'
 axios.defaults.withCredentials = true
 
-// import reportWebVitals from './reportWebVitals';
-
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store = {store}>

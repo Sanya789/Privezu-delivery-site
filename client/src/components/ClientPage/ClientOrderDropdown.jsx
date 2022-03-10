@@ -6,18 +6,10 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { changeStatusDb } from "../../redux/ac/orderActions";
 function ClientOrderDropdown({ clientOrders, indx }) {
-
-  console.log('23333',clientOrders);
-  // if (!clientOrders) return null
-
   const dispatch = useDispatch()
   const accept = ()  => {
         dispatch(changeStatusDb(clientOrders.id))
-          
-        
-    // navigate('/')
   }
-
 
   return (
     <>

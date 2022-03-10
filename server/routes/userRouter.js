@@ -14,8 +14,6 @@ router.route('/signup')
   .post(async (req, res) => {
     const { email, name, phone, password } = req.body;
 
-    // console.log(req.body);
-
     if (email && name && password && phone) {
       const cryptPass = await bcrypt.hash(password, 10)
       try {
@@ -44,9 +42,7 @@ router.route('/signin')
         const validPassword = await bcrypt.compare(password, currentUser.password)
         // console.log({ validPassword, password, curPassword: currentUser.password })
         if (currentUser && validPassword) {
-          // console.log("=================")
           req.session.user = { id: currentUser.id, name: currentUser.name, roleId: currentUser.roleId }
-          // console.log(req.session)
           return res.json({ user: { id: currentUser.id, name: currentUser.name, roleId: currentUser.roleId } })
         } else {
           return res.sendStatus(500)
@@ -65,7 +61,6 @@ router.route('/signin')
   router.route('/')
   .get( async (req, res)=>{
     const user = await User.findOne({where: {id:req.session.user.id}})
-    // console.log('=====666',user);
     res.json(user)
   })
 
@@ -78,10 +73,8 @@ router.route('/logout')
 
 router.route('/')
   .get( async (req, res)=>{
-    console.log('=====666', user);
     const user = await User.findOne({where: {id:req.session.id}})
     res.json({user})
-    console.log('=====666', user);
   })
 
 module.exports = router;

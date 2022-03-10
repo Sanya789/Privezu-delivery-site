@@ -6,9 +6,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 function DriverOrderDropdown({ driverOrders, indx }) {
 
-  console.log('23333',driverOrders);
-  // if (!clientOrders) return null
-
   return (
     <>
       <div className={indx}>
